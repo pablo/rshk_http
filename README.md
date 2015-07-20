@@ -2,13 +2,15 @@
 
 Package for making simpler HTTP REQUEST with PL/SQL.
 
-Sample GET:
+## Samples
+
+### GET:
 
     select rshk_http.do_get('http://www.roshka.com') from dual;
 
 Will return a BLOB containing URL's content.
 
-Sample POST:
+### POST:
 
     declare
        p_names TStringArray;
@@ -20,4 +22,16 @@ Sample POST:
        r := rshk_http.do_post('http://www.roshka.com', p_names, p_values);
     end;
 
+## Prerequisites
+
+You need to have `utl_http` package installed. Here's how you'd do it on
+a UNIX based server:
+
+    $ cd $ORACLE_HOME
+    $ cd rdbms/admin
+    $ sqlplus sys as sysdba
+    sql> @utlhttp.sql
+    sql> @prvthttp.plb
+
+This was tested on Oracle 11gR2 (XE).
 
